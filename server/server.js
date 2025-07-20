@@ -24,6 +24,10 @@ app.use(cors());
 app.use(express.json());
 app.use(helmet());
 
+app.get('/', (req, res) => {
+  res.send('Wellcome to my backend!!🥳 It finally works🥹. The struggle was real lol🤣😭.... Thanks for everything Mr Dedan!🫡');
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/transactions', transactionRoutes);
