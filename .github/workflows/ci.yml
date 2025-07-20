@@ -1,0 +1,20 @@
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  test-client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd client && npm install && npm test
+      
+  test-server:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:latest
+        ports: ['27017:27017']
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd server && npm install && npm test
